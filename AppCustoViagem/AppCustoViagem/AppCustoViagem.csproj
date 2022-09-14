@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="View\FormularioViagem.xaml.cs">
       <DependentUpon>FormularioViagem.xaml</DependentUpon>
     </Compile>
