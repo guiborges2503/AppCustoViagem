@@ -1,12 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppCustoViagem.View.ListaPedagio">
+             x:Class="AppCustoViagem.View.ListaPedagio"
+             Title="Lista de Pedágios">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+ Novo" x:Name="Btn_NovoPedagio" Clicked="Btn_NovoPedagio_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="7">
+            <Label Style="{StaticResource Titulo}" Text="Lista de Pedágios" />
+
+            <RefreshView x:Name="atualizando" IsRefreshing="True" Refreshing="atualizando_Refreshing">
+
+                <ListView x:Name="lst_pedagios">
+                    <ListView.Header>
+                        <Grid RowDefinitions="Auto" ColumnDefinitions="0.2*, *, *">
+                            <Label Grid.Row="0" Grid.Column="0" Text="ID" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Localização" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="Valor" />
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowDefinitions="Auto" 
+                                              ColumnDefinitions="0.2*,*,*">
+
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Localizacao}" />
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Valor}" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </RefreshView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
